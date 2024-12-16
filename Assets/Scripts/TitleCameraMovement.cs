@@ -20,6 +20,7 @@ public class TitleCameraMovement : MonoBehaviour
     public float titleRotSpeed = 1f;
     public float rotAngleMin;
     public float rotAngleMax;
+ 
 
     //movement between states
     Vector3 vel = Vector3.zero;
@@ -32,7 +33,7 @@ public class TitleCameraMovement : MonoBehaviour
     void Start()
     {
         camState = CameraStates.main;
-        transform.position = title.position;
+        
     }
 
     // Update is called once per frame
@@ -43,6 +44,7 @@ public class TitleCameraMovement : MonoBehaviour
 
     void StateMachine()
     {
+        
         if (camState == CameraStates.main)
         {
             TitleRotation();
@@ -86,32 +88,41 @@ public class TitleCameraMovement : MonoBehaviour
         }
     }
 
-    void TitleRotation()
+ 
+    public void TitleRotation()
     {
+        camState = CameraStates.main;
+
+        
         transform.position = Vector3.SmoothDamp(transform.position, title.position, ref vel, speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, title.rotation, rotSpeed * Time.deltaTime);
 
-
+  
         float rY = Mathf.SmoothStep(rotAngleMin, rotAngleMax, Mathf.PingPong(Time.time * titleRotSpeed, 1));
         transform.rotation = Quaternion.Euler(15, rY, 0);
+
+
     }
 
-    void LevelSelect()
+    public void LevelSelect()
     {
-       
+        camState = CameraStates.levelSelect;
+
         transform.position = Vector3.SmoothDamp(transform.position, levelSelect.position, ref vel, speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, levelSelect.rotation, rotSpeed * Time.deltaTime);
     }
 
-    void Options()
+    public void Options()
     {
-        
+        camState = CameraStates.options;
+
         transform.position = Vector3.SmoothDamp(transform.position, options.position, ref vel, speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, options.rotation, rotSpeed * Time.deltaTime);
     }
 
-    void Instructions()
+    public void Instructions()
     {
+        camState = CameraStates.instructions;
 
         transform.position = Vector3.SmoothDamp(transform.position, instructions.position, ref vel, speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, instructions.rotation, rotSpeed * Time.deltaTime);
