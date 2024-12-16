@@ -8,7 +8,7 @@ public class FrontendUI : MonoBehaviour
     public AudioMixer mixer;
     public Slider musicSlider;
     public Slider sfxSlider;
-    public GameObject musicToggle;
+    public Toggle musicToggle;
 
     private void Awake()
     {
@@ -18,21 +18,33 @@ public class FrontendUI : MonoBehaviour
     }
 
     private void Start()
-    {
+    {        
+
+        
+
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-        if (PlayerPrefs.GetInt("MutedMusic") == 0)
+        print(musicSlider.value);
+
+
+        if (PlayerPrefs.GetInt("MusicOn") == 1)
         {
-            musicToggle.GetComponent<Toggle>().isOn = true;
+            musicToggle.isOn = true;
+            LevelManager.Instance.musicSource.mute = false;
         }
         else
         {
-            musicToggle.GetComponent<Toggle>().isOn = false;
+            musicToggle.isOn = false;
+            LevelManager.Instance.musicSource.mute = true;
+
         }
 
         LevelManager.Instance.PlayClip(0, LevelManager.Instance.musicSource);
+
+
        
     }
+    #region Title buttons
     public void QuitGame()
     {
         Application.Quit();
@@ -51,14 +63,30 @@ public class FrontendUI : MonoBehaviour
     {
         camStates = CameraStates.options;
     }
+    #endregion
+
+    public void ChooseLevel(string level)
+    {
+        LevelManager.Instance.LoadScene(level);
+    }
+
 
     #region audio settings
     public void ToggleMusic(bool value)
     {
-        print(value);
-        LevelManager.Instance.musicSource.mute = value;
-        PlayerPrefs.SetInt("MusicMuted", value ? 1 : 0);
-        
+        LevelManager.Instance.musicSource.mute = !value;
+
+        if (value)
+        {
+            PlayerPrefs.SetInt("MusicOn", value ? 1 : 0);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("MusicOn", value ? 1 : 0);
+
+        }
+        print(PlayerPrefs.GetInt("MusicOn"));
+
     }
     
 

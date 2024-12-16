@@ -14030,7 +14030,7 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: 0bb9a7a99935aa0489c9969cc6e60807, type: 2}
   musicSlider: {fileID: 673442612}
   sfxSlider: {fileID: 392670135}
-  musicToggle: {fileID: 169343354}
+  musicToggle: {fileID: 169343356}
 --- !u!4 &1729287617
 Transform:
   m_ObjectHideFlags: 0
@@ -16421,7 +16421,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2143847607}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: ChooseLevel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Dummy Game
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2143847607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16471,8 +16483,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 541364943}
   - {fileID: 47452744}
+  - {fileID: 2129679061}
   - {fileID: 1515979759}
   - {fileID: 1157280526}
   - {fileID: 1729287617}
   - {fileID: 496109414}
-  - {fileID: 2129679061}

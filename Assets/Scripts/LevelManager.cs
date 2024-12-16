@@ -22,10 +22,7 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    private void Start()
-    {
         if (PlayerPrefs.HasKey("MutedMusic"))
         {
             PlayerPrefs.GetInt("MusicMuted");
@@ -53,7 +50,17 @@ public class LevelManager : MonoBehaviour
             PlayerPrefs.SetFloat("SFXVolume", defaultVolume);
         }
 
+        if (PlayerPrefs.HasKey("MusicOn"))
+        {
+            PlayerPrefs.GetInt("MusicOn");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("MusicOn", 1);
+        }
     }
+
+    
 
     public void PlayClip(int clipNumber, AudioSource source)
     {
