@@ -1,30 +1,102 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using TMPro;
+
+
 
 public class FrontendUI : MonoBehaviour
 {
     CameraStates camStates;
+
+    public float defaultVolume = 0.5f;
+
     public AudioMixer mixer;
     public Slider musicSlider;
     public Slider sfxSlider;
     public Toggle musicToggle;
 
+    public TMP_Dropdown difficultyDrop;
+    public TMP_InputField playerNameInput;
+
     private void Awake()
     {
-        musicSlider.onValueChanged.AddListener(SetMusicVolume);
-        sfxSlider.onValueChanged.AddListener(SetSFXVolume);
-       
+        LoadSettings();
     }
 
     private void Start()
     {        
+        SetUIValues();
 
-        
+        //music temp
+        LevelManager.Instance.PlayClip(0, LevelManager.Instance.musicSource);
+    }
 
+    #region load and set ui/settings
+    void LoadSettings()
+    {
+        if (PlayerPrefs.HasKey("PlayerName"))
+        {
+            PlayerPrefs.GetString("PlayerName");
+        }
+        else
+        {
+            PlayerPrefs.SetString("PlayerName", "Player");
+        }
+        if (PlayerPrefs.HasKey("Difficulty"))
+        {
+            PlayerPrefs.GetInt("Difficulty");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Difficulty", 0);
+        }
+
+        if (PlayerPrefs.HasKey("MutedMusic"))
+        {
+            PlayerPrefs.GetInt("MusicMuted");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("MusicMuted", 0);
+        }
+
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {
+            PlayerPrefs.GetFloat("MusicVolume");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("MusicVolume", defaultVolume);
+        }
+
+        if (PlayerPrefs.HasKey("SFXVolume"))
+        {
+            PlayerPrefs.GetFloat("SFXVolume");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("SFXVolume", defaultVolume);
+        }
+
+        if (PlayerPrefs.HasKey("MusicOn"))
+        {
+            PlayerPrefs.GetInt("MusicOn");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("MusicOn", 1);
+        }
+    }
+
+    
+    void SetUIValues()
+    {
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-        print(musicSlider.value);
+
+        difficultyDrop.value = PlayerPrefs.GetInt("Difficulty");
+        playerNameInput.text = PlayerPrefs.GetString("PlayerName");
 
 
         if (PlayerPrefs.GetInt("MusicOn") == 1)
@@ -38,12 +110,9 @@ public class FrontendUI : MonoBehaviour
             LevelManager.Instance.musicSource.mute = true;
 
         }
-
-        LevelManager.Instance.PlayClip(0, LevelManager.Instance.musicSource);
-
-
-       
     }
+    #endregion
+
     #region Title buttons
     public void QuitGame()
     {
@@ -63,13 +132,13 @@ public class FrontendUI : MonoBehaviour
     {
         camStates = CameraStates.options;
     }
-    #endregion
+    
 
     public void ChooseLevel(string level)
     {
         LevelManager.Instance.LoadScene(level);
     }
-
+    #endregion
 
     #region audio settings
     public void ToggleMusic(bool value)
@@ -90,18 +159,33 @@ public class FrontendUI : MonoBehaviour
     }
     
 
-    void SetMusicVolume(float value)
+    public void SetMusicVolume(float value)
     {
         mixer.SetFloat("MusicVolume", Mathf.Log10(value) * 20);
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
     }
 
-    void SetSFXVolume(float value)
+    public void SetSFXVolume(float value)
     {
         mixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20);
         PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
     }
 
+    #endregion
+
+    #region other settings
+
+    public void ChangeDifficulty(int value)
+    {        
+        PlayerPrefs.SetInt("Difficulty", value);
+        print(value);
+    }
+
+    public void ChangePlayerName(string input)
+    {
+        PlayerPrefs.SetString("PlayerName", input);
+        print(name);
+    }
     #endregion
 
 

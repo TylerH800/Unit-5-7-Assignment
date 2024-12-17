@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public enum CameraStates
@@ -65,27 +66,6 @@ public class TitleCameraMovement : MonoBehaviour
             Instructions();
         }
 
-        //temp
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            camState = CameraStates.options;
-
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            camState = CameraStates.main;
-
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            camState = CameraStates.instructions;
-
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            camState = CameraStates.levelSelect;
-
-        }
     }
 
  
@@ -126,6 +106,7 @@ public class TitleCameraMovement : MonoBehaviour
 
         transform.position = Vector3.SmoothDamp(transform.position, instructions.position, ref vel, speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, instructions.rotation, rotSpeed * Time.deltaTime);
+        
     }
 
 
