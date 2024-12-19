@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
+using Unity.VisualScripting;
 
 
 
@@ -27,10 +29,26 @@ public class FrontendUI : MonoBehaviour
     private void Start()
     {        
         SetUIValues();
-
+   
         //music temp
         LevelManager.Instance.PlayClip(0, LevelManager.Instance.musicSource);
     }
+
+
+    //underscore so at the top of function list
+    public void _ButtonPressSFX()
+    {
+        LevelManager.Instance.PlayClip(4, LevelManager.Instance.sfxSource);
+    }
+    public void _PageChangeSFX()
+    {
+        LevelManager.Instance.PlayClip(1, LevelManager.Instance.sfxSource);
+    }
+    public void _LoadLevelSFX()
+    {
+        LevelManager.Instance.PlayClip(2, LevelManager.Instance.sfxSource);
+
+    } 
 
     #region load and set ui/settings
     void LoadSettings()
@@ -92,6 +110,7 @@ public class FrontendUI : MonoBehaviour
     
     void SetUIValues()
     {
+        StartCoroutine(PreventStartSFX());
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
 
@@ -110,6 +129,14 @@ public class FrontendUI : MonoBehaviour
             LevelManager.Instance.musicSource.mute = true;
 
         }
+    }
+
+    IEnumerator PreventStartSFX() //prevents sfx from playing if SetUIValues changes a value like a toggle
+    {
+        LevelManager.Instance.sfxSource.mute = true;
+        yield return new WaitForSeconds(0.1f);
+        LevelManager.Instance.sfxSource.mute = false;
+
     }
     #endregion
 

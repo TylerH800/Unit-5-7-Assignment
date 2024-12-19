@@ -1436,7 +1436,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 79300787}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _LoadLevelSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &79300787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1950,7 +1962,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5049535184150509095, guid: 0bb9a7a99935aa0489c9969cc6e60807, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2280,6 +2292,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
         m_MethodName: ToggleMusic
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _ButtonPressSFX
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3505,6 +3529,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _ButtonPressSFX
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7767,6 +7803,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _PageChangeSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &966194426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10744,6 +10792,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _ButtonPressSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1394960229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11200,6 +11260,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _ButtonPressSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1468114911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11553,6 +11625,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1515979758}
         m_TargetAssemblyTypeName: TitleCameraMovement, Assembly-CSharp
         m_MethodName: CannotRotate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _PageChangeSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12363,6 +12447,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _PageChangeSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1578108214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12581,7 +12677,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5989045668246279413, guid: 0bb9a7a99935aa0489c9969cc6e60807, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -13546,13 +13642,13 @@ MonoBehaviour:
     m_Options:
     - m_Text: Standard
       m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
+      m_Color: {r: 0, g: 1, b: 0.01549387, a: 1}
     - m_Text: Challenging
       m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
+      m_Color: {r: 1, g: 0.6652831, b: 0, a: 1}
     - m_Text: Super Buster
       m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
+      m_Color: {r: 0.42767292, g: 0, b: 0, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -13560,6 +13656,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
         m_MethodName: ChangeDifficulty
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _ButtonPressSFX
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13982,7 +14090,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _ButtonPressSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls:
@@ -13990,6 +14110,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
         m_MethodName: ChangePlayerName
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _ButtonPressSFX
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -14489,6 +14621,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _PageChangeSFX
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -15296,9 +15440,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1515979758}
-        m_TargetAssemblyTypeName: TitleCameraMovement, Assembly-CSharp
-        m_MethodName: CannotRotate
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _PageChangeSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15629,6 +15773,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1515979758}
         m_TargetAssemblyTypeName: TitleCameraMovement, Assembly-CSharp
         m_MethodName: LevelSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _PageChangeSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16161,7 +16317,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2089922507}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _LoadLevelSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2089922507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16370,9 +16538,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb943c311faee849a832544cd92f026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultVolume: 0.5
   clips:
-  - {fileID: 8300000, guid: f12c83a5188bb4f47ab442cf9a30d31a, type: 3}
+  - {fileID: 8300000, guid: c398f585ed3241b4697d23de735e77c6, type: 3}
+  - {fileID: 8300000, guid: 60f22a5c7c7d67f42b5e98d19854ab6c, type: 3}
+  - {fileID: 8300000, guid: f1d2fe26cefbe114390c41b94e916c03, type: 3}
+  - {fileID: 8300000, guid: ef9b2cd136f0aa2408e904ac0133e72a, type: 3}
+  - {fileID: 8300000, guid: 6b5b9d93f79e39e45940896ea0640032, type: 3}
   musicSource: {fileID: 1602907735}
   sfxSource: {fileID: 161168545}
 --- !u!4 &2129679061
@@ -16640,6 +16811,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Dummy Game
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1729287616}
+        m_TargetAssemblyTypeName: FrontendUI, Assembly-CSharp
+        m_MethodName: _LoadLevelSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2143847607
