@@ -1,15 +1,21 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class DummyGame : MonoBehaviour
 {
     public TextMeshProUGUI playerName;
     public TextMeshProUGUI diffDisplay;
     public TextMeshProUGUI musicStatus;
+
+    public Animator crossfade;
+    public float transitionTime = 1.5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         LoadUI();
+        StartCoroutine(BGMusic());
     }
     void LoadUI()
     {
@@ -47,6 +53,25 @@ public class DummyGame : MonoBehaviour
 
     public void GoToTitle()
     {
-        LevelManager.Instance.LoadScene("Frontend");
+        StartCoroutine(Crossfade());
+    }
+
+    private IEnumerator Crossfade()
+    {
+        crossfade.SetTrigger("Crossfade");
+        yield return new WaitForSeconds(transitionTime);
+
+        LevelManager.Instance.StopMusic();
+        SceneManager.LoadScene("Frontend");
+    }
+
+    IEnumerator BGMusic()
+    {
+        float length = LevelManager.Instance.clips[3].length - 2f;
+        while (true)
+        {
+            LevelManager.Instance.PlayClip(3, LevelManager.Instance.musicSource);
+            yield return new WaitForSeconds(length);
+        }
     }
 }

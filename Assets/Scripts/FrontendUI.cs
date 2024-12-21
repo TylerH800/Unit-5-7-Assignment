@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 
 
@@ -21,6 +22,9 @@ public class FrontendUI : MonoBehaviour
     public TMP_Dropdown difficultyDrop;
     public TMP_InputField playerNameInput;
 
+    public Animator crossfade;
+    public float transitionTime = 1;
+
     private void Awake()
     {
         LoadSettings();
@@ -30,25 +34,39 @@ public class FrontendUI : MonoBehaviour
     {        
         SetUIValues();
    
-        //music temp
-        LevelManager.Instance.PlayClip(0, LevelManager.Instance.musicSource);
+        StartCoroutine(TitleMusic());
     }
 
-
+    #region playing sound
     //underscore so at the top of function list
     public void _ButtonPressSFX()
     {
         LevelManager.Instance.PlayClip(4, LevelManager.Instance.sfxSource);
+      
     }
     public void _PageChangeSFX()
     {
         LevelManager.Instance.PlayClip(1, LevelManager.Instance.sfxSource);
+        
     }
     public void _LoadLevelSFX()
     {
         LevelManager.Instance.PlayClip(2, LevelManager.Instance.sfxSource);
+        
 
-    } 
+    }
+
+    IEnumerator TitleMusic()
+    {
+        float length = LevelManager.Instance.clips[0].length - 2f;
+        while (true)
+        {
+            LevelManager.Instance.PlayClip(0, LevelManager.Instance.musicSource);
+            yield return new WaitForSeconds(length);
+        }
+    }
+
+    #endregion
 
     #region load and set ui/settings
     void LoadSettings()
@@ -134,9 +152,8 @@ public class FrontendUI : MonoBehaviour
     IEnumerator PreventStartSFX() //prevents sfx from playing if SetUIValues changes a value like a toggle
     {
         LevelManager.Instance.sfxSource.mute = true;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         LevelManager.Instance.sfxSource.mute = false;
-
     }
     #endregion
 
@@ -160,10 +177,19 @@ public class FrontendUI : MonoBehaviour
         camStates = CameraStates.options;
     }
     
-
     public void ChooseLevel(string level)
     {
-        LevelManager.Instance.LoadScene(level);
+        StartCoroutine(Crossfade(level));
+    }
+
+
+    private IEnumerator Crossfade(string level)
+    {
+        crossfade.SetTrigger("Crossfade");
+        yield return new WaitForSeconds(transitionTime);
+
+        LevelManager.Instance.StopMusic();
+        SceneManager.LoadScene(level);
     }
     #endregion
 
@@ -171,6 +197,7 @@ public class FrontendUI : MonoBehaviour
     public void ToggleMusic(bool value)
     {
         LevelManager.Instance.musicSource.mute = !value;
+        
 
         if (value)
         {
@@ -204,8 +231,8 @@ public class FrontendUI : MonoBehaviour
 
     public void ChangeDifficulty(int value)
     {        
-        PlayerPrefs.SetInt("Difficulty", value);
-        print(value);
+        PlayerPrefs.SetInt("Difficulty", value);        
+        
     }
 
     public void ChangePlayerName(string input)

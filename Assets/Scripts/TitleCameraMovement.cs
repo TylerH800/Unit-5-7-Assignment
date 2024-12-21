@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -6,10 +7,12 @@ using static UnityEngine.GraphicsBuffer;
 
 public enum CameraStates
 { 
-    main,
+    goingToTitle,
     options,
     instructions,
-    levelSelect
+    levelSelect,
+    rotating
+    
 }
 
 public class TitleCameraMovement : MonoBehaviour
@@ -21,32 +24,38 @@ public class TitleCameraMovement : MonoBehaviour
     public float titleRotSpeed = 1f;
     public float rotAngleMin;
     public float rotAngleMax;
- 
+
+    float rY;
+    float time;
 
     //movement between states
     Vector3 vel = Vector3.zero;
 
-
     public float speed = 3;
     public float rotSpeed = 9;
 
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        camState = CameraStates.main;
-        
+        camState = CameraStates.goingToTitle;
     }
 
     // Update is called once per frame
     void Update()
     {
         StateMachine();
+        
     }
 
     void StateMachine()
     {
-        
-        if (camState == CameraStates.main)
+        if (camState == CameraStates.rotating)
+        {
+            Rotating();
+        }
+
+        if (camState == CameraStates.goingToTitle)
         {
             TitleRotation();
         }
@@ -68,18 +77,29 @@ public class TitleCameraMovement : MonoBehaviour
 
     }
 
- 
-    public void TitleRotation()
+    void Rotating()
     {
-        camState = CameraStates.main;
+        time += Time.deltaTime;
+        //Debug.Log(time);
+        rY = Mathf.SmoothStep(rotAngleMin, rotAngleMax, Mathf.PingPong(time * titleRotSpeed, 1));
+        transform.rotation = Quaternion.Euler(15, rY, 0);
+    }
+
+    public void TitleRotation()
+    {        
+        camState = CameraStates.goingToTitle;
 
         
+
         transform.position = Vector3.SmoothDamp(transform.position, title.position, ref vel, speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, title.rotation, rotSpeed * Time.deltaTime);
+        
+        if(Vector3.Distance(transform.position, title.position) < 0.05f)
+        {
+            camState = CameraStates.rotating;
+            time = 0;
 
-  
-        float rY = Mathf.SmoothStep(rotAngleMin, rotAngleMax, Mathf.PingPong(Time.time * titleRotSpeed, 1));
-        transform.rotation = Quaternion.Euler(15, rY, 0);
+        } 
 
 
     }

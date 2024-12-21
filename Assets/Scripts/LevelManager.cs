@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
-    
+
     [Header("Audio")]
     public AudioClip[] clips;
     public AudioSource musicSource, sfxSource;
@@ -22,23 +22,26 @@ public class LevelManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        }        
-    }    
+        }
+    }
 
     public void PlayClip(int clipNumber, AudioSource source)
     {
         source.PlayOneShot(clips[clipNumber]);
     }
 
-    public void StopClip()
+    public void StopMusic()
     {
         musicSource.Stop();
-        sfxSource.Stop();
     }
 
-    public void LoadScene(string sceneName)
+    public void StopSFX()
     {
-        SceneManager.LoadScene(sceneName);
+        sfxSource.Stop();
+
     }
+
+
+
 
 }
