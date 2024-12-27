@@ -8006,7 +8006,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1515979758}
         m_TargetAssemblyTypeName: TitleCameraMovement, Assembly-CSharp
-        m_MethodName: TitleRotation
+        m_MethodName: GoingToTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11825,7 +11825,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1515979758}
         m_TargetAssemblyTypeName: TitleCameraMovement, Assembly-CSharp
-        m_MethodName: TitleRotation
+        m_MethodName: GoingToTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15639,7 +15639,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1515979758}
         m_TargetAssemblyTypeName: TitleCameraMovement, Assembly-CSharp
-        m_MethodName: TitleRotation
+        m_MethodName: GoingToTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

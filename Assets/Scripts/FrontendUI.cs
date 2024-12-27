@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 
-
+//script used for all ui elements on the frontend scene
 public class FrontendUI : MonoBehaviour
 {
     CameraStates camStates;
@@ -38,7 +38,7 @@ public class FrontendUI : MonoBehaviour
     }
 
     #region playing sound
-    //underscore so at the top of function list
+    //underscore so at the top of method list
     public void _ButtonPressSFX()
     {
         LevelManager.Instance.PlayClip(4, LevelManager.Instance.sfxSource);
@@ -129,6 +129,7 @@ public class FrontendUI : MonoBehaviour
     void SetUIValues()
     {
         StartCoroutine(PreventStartSFX());
+
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
 
@@ -149,7 +150,7 @@ public class FrontendUI : MonoBehaviour
         }
     }
 
-    IEnumerator PreventStartSFX() //prevents sfx from playing if SetUIValues changes a value like a toggle
+    IEnumerator PreventStartSFX() //prevents sfx from playing for if SetUIValues changes a value like a toggle
     {
         LevelManager.Instance.sfxSource.mute = true;
         yield return new WaitForSeconds(0.5f);
@@ -163,7 +164,7 @@ public class FrontendUI : MonoBehaviour
         Application.Quit();
         print("Quit");
     }
-
+    
     public void HowToPlayButton()
     {
         camStates = CameraStates.instructions;
@@ -177,6 +178,7 @@ public class FrontendUI : MonoBehaviour
         camStates = CameraStates.options;
     }
     
+    //method used as coroutine cannot be called from a button
     public void ChooseLevel(string level)
     {
         StartCoroutine(Crossfade(level));
@@ -185,34 +187,24 @@ public class FrontendUI : MonoBehaviour
 
     private IEnumerator Crossfade(string level)
     {
+        //starts animation
         crossfade.SetTrigger("Crossfade");
         yield return new WaitForSeconds(transitionTime);
 
+        //loads inputted scene
         LevelManager.Instance.StopMusic();
         SceneManager.LoadScene(level);
     }
     #endregion
 
-    #region audio settings
+    #region Options Menu
     public void ToggleMusic(bool value)
     {
         LevelManager.Instance.musicSource.mute = !value;
-        
 
-        if (value)
-        {
-            PlayerPrefs.SetInt("MusicOn", value ? 1 : 0);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("MusicOn", value ? 1 : 0);
-
-        }
-        print(PlayerPrefs.GetInt("MusicOn"));
-
+        PlayerPrefs.SetInt("MusicOn", value ? 1 : 0);
     }
     
-
     public void SetMusicVolume(float value)
     {
         mixer.SetFloat("MusicVolume", Mathf.Log10(value) * 20);
@@ -223,16 +215,11 @@ public class FrontendUI : MonoBehaviour
     {
         mixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20);
         PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
-    }
-
-    #endregion
-
-    #region other settings
+    } 
 
     public void ChangeDifficulty(int value)
     {        
         PlayerPrefs.SetInt("Difficulty", value);        
-        
     }
 
     public void ChangePlayerName(string input)

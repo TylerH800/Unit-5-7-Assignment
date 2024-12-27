@@ -17,16 +17,18 @@ public enum CameraStates
 
 public class TitleCameraMovement : MonoBehaviour
 {
-    CameraStates camState;
+    private CameraStates camState;
 
+    //camera position presets
     public Transform title, options, instructions, levelSelect;
+    
     //title rotation
     public float titleRotSpeed = 1f;
     public float rotAngleMin;
     public float rotAngleMax;
 
-    float rY;
-    float time;
+    private float rY;
+    private float time;
 
     //movement between states
     Vector3 vel = Vector3.zero;
@@ -57,7 +59,7 @@ public class TitleCameraMovement : MonoBehaviour
 
         if (camState == CameraStates.goingToTitle)
         {
-            TitleRotation();
+            GoingToTitle();
         }
 
         if (camState == CameraStates.options)
@@ -79,35 +81,35 @@ public class TitleCameraMovement : MonoBehaviour
 
     void Rotating()
     {
+        //artifical time float rather than Timne.time allows me to manipulate the ping pong better
+
         time += Time.deltaTime;
-        //Debug.Log(time);
+        
+        //smoothly rotates the camera between set angles
         rY = Mathf.SmoothStep(rotAngleMin, rotAngleMax, Mathf.PingPong(time * titleRotSpeed, 1));
         transform.rotation = Quaternion.Euler(15, rY, 0);
     }
 
-    public void TitleRotation()
+    public void GoingToTitle()
     {        
         camState = CameraStates.goingToTitle;
 
-        
-
+        //smoothly transitions to desired position
         transform.position = Vector3.SmoothDamp(transform.position, title.position, ref vel, speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, title.rotation, rotSpeed * Time.deltaTime);
         
+        //if close enough, start the camera rotation
         if(Vector3.Distance(transform.position, title.position) < 0.05f)
         {
             camState = CameraStates.rotating;
             time = 0;
-
         } 
-
-
     }
 
     public void LevelSelect()
     {
         camState = CameraStates.levelSelect;
-
+        
         transform.position = Vector3.SmoothDamp(transform.position, levelSelect.position, ref vel, speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, levelSelect.rotation, rotSpeed * Time.deltaTime);
     }
@@ -123,11 +125,10 @@ public class TitleCameraMovement : MonoBehaviour
     public void Instructions()
     {
         camState = CameraStates.instructions;
-
+    
         transform.position = Vector3.SmoothDamp(transform.position, instructions.position, ref vel, speed * Time.deltaTime);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, instructions.rotation, rotSpeed * Time.deltaTime);
         
     }
-
 
 }
